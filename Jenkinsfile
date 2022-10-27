@@ -1,14 +1,15 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            sh 'echo "building the repo"'
-          }
+    agent { docker { image 'python:3.7.2' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'pip install flask
+            }
         }
-      }
+        stage('test') {
+            steps {
+                sh 'python src/flask/hello.py'
+            }
+        }
     }
-  }
 }
