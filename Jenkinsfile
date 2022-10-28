@@ -9,11 +9,12 @@ pipeline {
     stage('build') {
       steps {
         sh 'pip install --target ${env.WORKSPACE} flask'
+        sh 'python ./src/flask/hello.py &'
       }
     }
     stage('test') {
       steps {
-        sh 'python src/flask/hello.py'
+        echo "${env.NODE_NAME}"
       }
     }
   }
