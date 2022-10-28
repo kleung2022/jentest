@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'pip install --target ~/agent/workspace flask'
+        sh 'pip install --target /home/jenkins/agent/workspace flask'
         sh 'python ./src/flask/hello.py &'
       }
     }
